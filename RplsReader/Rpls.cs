@@ -8,6 +8,7 @@ namespace RplsReader
 {
     class Rpls
     {
+        [JsonIgnore]
         public int Version { get; private set; }
         public DateTime Date { get; private set; }
         public string ChannelName { get; private set; }
@@ -44,7 +45,7 @@ namespace RplsReader
         public static Rpls Parse(byte[] buffer, int offset)
         {
             var rpls = new Rpls();
-            var decoder = new AribB24.DotNet.B24Decoder();
+            var decoder = new B24Decoder();
             rpls.Version = buffer[offset + Offset.VERSION];
 
             rpls.playlistOffset = (int)ToUInt32(buffer, offset + Offset.PLAYLIST_OFFSET);
