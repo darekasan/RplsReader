@@ -42,6 +42,12 @@ namespace RplsReader
             public static readonly int DETAIL = 346;                // byte[1200]
         }
 
+        public static Rpls Parse(string path)
+        {
+            byte[] rawRpls = System.IO.File.ReadAllBytes(path);
+            return Parse(rawRpls, 0);
+        }
+
         public static Rpls Parse(byte[] buffer, int offset)
         {
             var rpls = new Rpls();

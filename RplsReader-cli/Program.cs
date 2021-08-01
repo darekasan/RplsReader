@@ -16,9 +16,8 @@ namespace RplsReader_cli
         {
             if (args.Length <= 0) return;
             if (!System.IO.File.Exists(args[0])) return;
-            byte[] rawRpls = System.IO.File.ReadAllBytes(args[0]);
 
-            var rpls = Rpls.Parse(rawRpls, 0);
+            var rpls = Rpls.Parse(args[0]);
 
             var options = new JsonSerializerOptions
             {
@@ -26,13 +25,6 @@ namespace RplsReader_cli
                 WriteIndented = true
             };
             Console.WriteLine(JsonSerializer.Serialize(rpls, options));
-
-            Console.ReadLine();
-        }
-
-        static void Help()
-        {
-            
         }
     }
 }

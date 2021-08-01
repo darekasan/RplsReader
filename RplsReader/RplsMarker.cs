@@ -48,7 +48,7 @@ namespace RplsReader
 
         public string TimeText { get; private set; }
 
-        public int TimeMillisecond { get; private set; }
+        public uint TimeMillisecond { get; private set; }
 
         [JsonIgnore]
         public RplsPlaylistItem PlaylistItem { get; private set; }
@@ -91,7 +91,7 @@ namespace RplsReader
                 item.PlaylistItem = playlist.Items[item.PlaylistItemId];
                 item.Time = new TimeSpan( (item.RawTime - item.PlaylistItem.In)/45U*TimeSpan.TicksPerMillisecond);
 
-                item.TimeMillisecond = (int)item.Time.TotalMilliseconds;
+                item.TimeMillisecond = (uint)item.Time.TotalMilliseconds;
                 item.TimeText = item.Time.ToString();
             }
 

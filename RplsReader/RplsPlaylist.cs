@@ -42,6 +42,8 @@ namespace RplsReader
         public uint In { get; private set; }
         public uint Out { get; private set; }
 
+        public uint DurationMillisecond { get; private set; }
+
         class Offset
         {
             public static readonly int LENGTH = 0;                      // UInt16
@@ -63,6 +65,8 @@ namespace RplsReader
 
             item.In = Rpls.ToUInt32(buffer, offset + Offset.IN);
             item.Out = Rpls.ToUInt32(buffer, offset + Offset.OUT);
+
+            item.DurationMillisecond = (uint)((item.Out - item.In) / 45U);
 
             return item;
         }
