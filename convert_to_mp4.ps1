@@ -22,6 +22,9 @@ if($args.Count -ge 2){
 }
 
 $metadata_tmp = Join-Path $out_dir "ffmeta.txt"
+function FFmeta([string]$key, [string]$value){
+    $key + "=" + $value.Replace("`r`n","`n").Replace("=","\=").Replace(";","\;").Replace("#","\#").Replace("\","\\").Replace("`n","\`n") + "`n"
+}
 
 foreach($item in $rpls_files){
     # RplsReader-cli.exeでrplsをjsonにしてもらって取得
@@ -36,8 +39,13 @@ foreach($item in $rpls_files){
     # $dst_path = Join-Path $stream_path ($data.Title+"-"+$data.Date.ToString()+".mp4")
     $dst_path = Join-Path $out_dir ($data.Title+".mp4")
 
-    # RplsMarkerItemをffmpegに渡す形式にする
+    # メタデータいろいろ
     $ffmeta = ";FFMETADATA1`n"
+    $ffmeta += (FFmeta "creation_time" $data.Date)
+    $ffmeta += (FFmeta "title" $data.Title)
+    $ffmeta += (FFmeta "comment" $data.Detail)
+
+    # RplsMarkerItemをffmpegに渡す形式にする
     $markers = $data.Marker.Items
     for ($i = 0; $i -lt $markers.Count; $i++) {
 
@@ -59,11 +67,13 @@ foreach($item in $rpls_files){
         }
 
         $ffmeta += "[CHAPTER]" + "`n"
-        $ffmeta += "TIMEBASE=1/1000" + "`n"
-        $ffmeta += "START=" + $in + "`n"
-        $ffmeta += "END=" + $out + "`n"
+        $ffmeta += (FFmeta "TIMEBASE" "1/1000")
+        
+        $ffmeta += (FFmeta "START" $in)
+        $ffmeta += (FFmeta "END" $out)
 
-        $ffmeta | Out-File -FilePath $metadata_tmp -Encoding ascii
+        $Utf8NoBomEncoding = New-Object System.Text.UTF8Encoding $False
+        [System.IO.File]::WriteAllLines($metadata_tmp, $ffmeta, $Utf8NoBomEncoding)
 
     }
 
