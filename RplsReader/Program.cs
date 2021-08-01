@@ -21,6 +21,8 @@ namespace RplsReader
                 WriteIndented = true
             };
             Console.WriteLine(JsonSerializer.Serialize(rpls, options));
+
+            Console.ReadLine();
         }
     }
 }

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30104.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RplsReader", "RplsReader\RplsReader.csproj", "{8B8E659F-8192-4DFB-8B83-9F4D6CACAF8A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RplsReader", "RplsReader\RplsReader.csproj", "{480061B2-B5CE-472E-9F67-56A1AA6E445B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8B8E659F-8192-4DFB-8B83-9F4D6CACAF8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8B8E659F-8192-4DFB-8B83-9F4D6CACAF8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8B8E659F-8192-4DFB-8B83-9F4D6CACAF8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8B8E659F-8192-4DFB-8B83-9F4D6CACAF8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{480061B2-B5CE-472E-9F67-56A1AA6E445B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{480061B2-B5CE-472E-9F67-56A1AA6E445B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{480061B2-B5CE-472E-9F67-56A1AA6E445B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{480061B2-B5CE-472E-9F67-56A1AA6E445B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

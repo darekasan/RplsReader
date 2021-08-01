@@ -1,8 +1,0 @@
-{
-  "profiles": {
-    "RplsReader": {
-      "commandName": "Project",
-      "commandLineArgs": "\"U:\\bd\\ビデオ\\backup\\SONY_BD_RECORDER_VOLUME4\\BDAV\\PLAYLIST\\00001.rpls\""
-    }
-  }
-}
