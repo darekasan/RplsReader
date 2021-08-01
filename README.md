@@ -10,7 +10,7 @@ rplsファイルから番組名と番組詳細、マーカー情報を取得し�
 
 ### 使い方(暫定)
 
-    RplsReader.exe <path to rpls file>
+    RplsReader-cli.exe <path to rpls file>
 
 するとこんな感じで出力される
 

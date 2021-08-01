@@ -1,9 +1,14 @@
 ﻿using System;
-using System.Text.Encodings.Web;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using RplsReader;
 using System.Text.Json;
+using System.Text.Encodings.Web;
 using System.Text.Unicode;
 
-namespace RplsReader
+namespace RplsReader_cli
 {
     class Program
     {
@@ -23,6 +28,11 @@ namespace RplsReader
             Console.WriteLine(JsonSerializer.Serialize(rpls, options));
 
             Console.ReadLine();
+        }
+
+        static void Help()
+        {
+            
         }
     }
 }

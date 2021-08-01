@@ -4,7 +4,7 @@ using System.Text;
 
 namespace RplsReader
 {
-    class RplsPlaylist
+    public class RplsPlaylist
     {
         public RplsPlaylistItem[] Items { get; private set; }
         class Offset
@@ -33,7 +33,7 @@ namespace RplsReader
      }
 
 
-    class RplsPlaylistItem
+    public class RplsPlaylistItem
     {
         public static readonly int SIZE = 22;
 

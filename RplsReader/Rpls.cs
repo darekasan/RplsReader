@@ -6,7 +6,7 @@ using System.Text.Json.Serialization;
 
 namespace RplsReader
 {
-    class Rpls
+    public class Rpls
     {
         [JsonIgnore]
         public int Version { get; private set; }

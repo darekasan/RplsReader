@@ -5,7 +5,7 @@ using System.Text.Json.Serialization;
 
 namespace RplsReader
 {
-    class RplsMarker
+    public class RplsMarker
     {
         public RplsMarkerItem[] Items { get; private set; }
 
@@ -36,7 +36,7 @@ namespace RplsReader
 
     }
 
-    class RplsMarkerItem
+    public class RplsMarkerItem
     {
         public bool Valid { get; private set; }
 
