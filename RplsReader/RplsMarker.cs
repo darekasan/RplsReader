@@ -88,8 +88,16 @@ namespace RplsReader
 
             if (playlist != null)
             {
+
                 item.PlaylistItem = playlist.Items[item.PlaylistItemId];
-                item.Time = new TimeSpan( (item.RawTime - item.PlaylistItem.In)/45U*TimeSpan.TicksPerMillisecond);
+
+                // やってることが正しいのかかなり怪しい部分
+                uint prevTimeMs = 0;
+                for (int i=0;i<item.PlaylistItemId;i++)
+                {
+                    prevTimeMs += playlist.Items[i].DurationMillisecond;
+                }
+                item.Time = new TimeSpan( ((item.RawTime - item.PlaylistItem.In)/45U+prevTimeMs)*TimeSpan.TicksPerMillisecond);
 
                 item.TimeMillisecond = (uint)item.Time.TotalMilliseconds;
                 item.TimeText = item.Time.ToString();

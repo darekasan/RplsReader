@@ -4,9 +4,15 @@ BDAVのrplsファイルをパースする
 
 ### なにこれ
 
-rplsファイルから番組名と番組詳細、マーカー情報を取得してjsonで出力します。
+##### RplsReader
+
+rplsファイルをパースするためのクラス群。作成や編集はできません。
 
 番組名や番組説明のデコードに[hunamizawa/AribB24.DotNet](https://github.com/hunamizawa/AribB24.DotNet)を使用します。
+
+##### RplsReader-cli
+
+rplsファイルから番組名と番組詳細、マーカー情報を取得してjsonで出力します。
 
 ### 使い方(暫定)
 
@@ -113,6 +119,8 @@ rplsファイルから番組名と番組詳細、マーカー情報を取得し�
 使用例としてPowerShellスクリプト(convert_to_mp4.ps1)を書いてみました。decryptedなBDAVのフォルダを指定するとrplsを見つけて、いい感じのファイル名のチャプター付きmp4にしてくれます。
 
 本当はRplsReader.dllを読み込んであれこれしたかったんですが、うまくいかなかったのでRplsReader-cli.exeが吐き出したjsonを使っています。
+
+レコーダーでカット編集などを行ったものだと正しく動作しない可能性が高いです。
 
 ### 条件
 

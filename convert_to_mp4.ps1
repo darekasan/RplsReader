@@ -56,7 +56,11 @@ foreach($item in $rpls_files){
         $out = 0
 
         if($i -eq $markers.Count-1){
-            $out = $data.Playlist.Items[0].DurationMillisecond;
+            $durr = 0
+            foreach($p in $data.Playlist.Items){
+                $durr += $p.DurationMillisecond
+            }
+            $out = $durr
         }else{
             for ($j = $i+1; $j -lt $markers.Count; $j++) {
                 if($markers[$j].Valid){

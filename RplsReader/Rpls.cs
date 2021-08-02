@@ -76,10 +76,23 @@ namespace RplsReader
                 offset + Offset.TITLE,
                 buffer[offset + Offset.TITLE_LENGTH]);
 
-            rpls.Detail = decoder.GetString(
-                buffer,
-                offset + Offset.DETAIL,
-                1200
+            int detailLength = ToUInt16(buffer, Offset.DETAIL_LENGTH);
+            int detail2Length = 0;
+            for (int i = offset + Offset.DETAIL + detailLength; i < offset + Offset.DETAIL + 1200; i++, detail2Length++)
+            {
+                if (buffer[i] == 0) break;
+            }
+
+            rpls.Detail = 
+                decoder.GetString(
+                    buffer,
+                    offset + Offset.DETAIL,
+                    ToUInt16(buffer,Offset.DETAIL_LENGTH)
+                ).Trim() + "\r\n\r\n" +
+                decoder.GetString(
+                    buffer,
+                    offset + Offset.DETAIL+ detailLength,
+                    detail2Length
                 ).Trim();
 
             rpls.Playlist = RplsPlaylist.Parse(buffer, offset + rpls.playlistOffset);
