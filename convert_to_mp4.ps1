@@ -36,7 +36,7 @@ foreach($item in $rpls_files){
     $src_path = Join-Path $stream_path $data.Playlist.Items[0].Filename
     
     # 出力ファイル名を決めるとこ
-    # $dst_path = Join-Path $stream_path ($data.Title+"-"+$data.Date.ToString()+".mp4")
+    # $dst_path = Join-Path $out_dir ((([DateTime]$data.Date).ToString("yyyyMMdd"))+"-"+$data.Title+".mp4")
     $dst_path = Join-Path $out_dir ($data.Title+".mp4")
 
     # メタデータいろいろ
