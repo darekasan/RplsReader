@@ -37,7 +37,9 @@ foreach($item in $rpls_files){
     
     # 出力ファイル名を決めるとこ
     # $dst_path = Join-Path $out_dir ((([DateTime]$data.Date).ToString("yyyyMMdd"))+"-"+$data.Title+".mp4")
-    $dst_path = Join-Path $out_dir ($data.Title+".mp4")
+    $dst_path = Join-Path $out_dir (($data.Title+".mp4").Split([IO.Path]::GetInvalidFileNameChars()) -join '_')
+
+    # .Split([IO.Path]::GetInvalidFileNameChars()) -join '_' をやるとファイル名に使えない文字を_に置き換えられる
 
     # メタデータいろいろ
     $ffmeta = ";FFMETADATA1`n"
@@ -85,7 +87,7 @@ foreach($item in $rpls_files){
     echo $dst_path
 
     # 変換実行
-    &$ffmpeg -i $src_path -i $metadata_tmp -map_metadata 1 -codec copy $dst_path 
+    &$ffmpeg -i $src_path -i $metadata_tmp -map_metadata 1 -bsf:a aac_adtstoasc -codec copy $dst_path 
 
     Remove-Item -Path $metadata_tmp
 }
